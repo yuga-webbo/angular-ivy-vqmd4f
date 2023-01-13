@@ -1,0 +1,28 @@
+<div class="container" style="margin: 2em 0; padding: 0">
+  <!-- Repeat the rows for  -->
+  <ng-container *ngFor="let e of [1, 2, 3, 4]">
+    <panning-container class="row" #panner="panning-container">
+      <ng-container *ngFor="let item of items; index as i">
+        <ng-container *panningItem>
+          <div class="item" [ngClass]="{ current: i === panner.currentIndex }">
+            {{ item.title }}
+          </div>
+        </ng-container>
+      </ng-container>
+    </panning-container>
+    <div style="row">
+      <button (click)="panner.page(-1)" class="btn btn-default col-xs-3">
+        Page Back
+      </button>
+      <button (click)="panner.shift(-1)" class="btn btn-default col-xs-3">
+        Prev
+      </button>
+      <button (click)="panner.shift(1)" class="btn btn-default col-xs-3">
+        Next
+      </button>
+      <button (click)="panner.page(1)" class="btn btn-default col-xs-3">
+        Page Forward
+      </button>
+    </div>
+  </ng-container>
+</div>
